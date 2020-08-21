@@ -7,6 +7,7 @@ const Safe = (props) => {
 
     return (
         <div>
+            <h2>Safe</h2>
             {safeList}
         </div>
     )

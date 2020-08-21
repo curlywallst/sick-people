@@ -7,6 +7,7 @@ const Sick = (props) => {
 
     return (
         <div>
+            <h2>Sick</h2>
             {sickList}
         </div>
     )

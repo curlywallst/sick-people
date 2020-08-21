@@ -19,7 +19,6 @@ function App() {
 
   const startTimer = () => {
       let i = setInterval(() => {
-        console.log("In here", people)
         updateCounter()}, 1000)
       setInt(i)
   }
@@ -30,13 +29,11 @@ function App() {
     } 
 
     return () => {
-      console.log("the end")
       clearInterval(int)
     }
   }, [people])
 
   useEffect(()=> {
-    console.log("The people", people)
     setGroups()
   }, [people])
   
@@ -50,7 +47,7 @@ function App() {
         return p
       }
     })
-    setPeople(peeps)
+    setPeople([...peeps])
   }
  
   const setGroups = () => {
@@ -66,17 +63,14 @@ function App() {
 
   const handleClick = (event) => {
     const peeps = people
-    peeps.find((p, i) => p.name === event.target.id).status = "safe"
+    peeps.find(p => p.name === event.target.id).status = "safe"
     setPeople([...peeps])
   }
 
   return (
     <div className="App">
-        <h2>Risky</h2>
         <Risky risky={riskyPeople} handleClick={handleClick} />       
-        <h2>Safe</h2>
         <Safe safe={safePeople} />
-        <h2>Sick</h2>
         <Sick sick={sickPeople} />
     </div>
   );

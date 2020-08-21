@@ -6,6 +6,7 @@ function Risky(props) {
 
     return (
         <div>
+            <h2>Risky</h2>
             {riskyList}
         </div>
     )
