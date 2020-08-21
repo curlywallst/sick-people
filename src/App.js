@@ -27,14 +27,15 @@ function App() {
     if (people.filter( (p) => p.status === "risky").length > 0){
       startTimer()
     } 
-
+    const risky = people.filter( (p) => p.status === "risky")
+    setRisky(risky)
+    const safe = people.filter( (p) => p.status === "safe")
+    setSafe(safe)
+    const sick = people.filter( (p) => p.status === "sick")
+    setSick(sick)
     return () => {
       clearInterval(int)
     }
-  }, [people])
-
-  useEffect(()=> {
-    setGroups()
   }, [people])
   
   const updateCounter = () => {
@@ -49,17 +50,6 @@ function App() {
     })
     setPeople([...peeps])
   }
- 
-  const setGroups = () => {
-    const risky = people.filter( (p) => p.status === "risky")
-    setRisky(risky)
-    const safe = people.filter( (p) => p.status === "safe")
-    setSafe(safe)
-    const sick = people.filter( (p) => p.status === "sick")
-    setSick(sick)
-  }
-
-  useEffect( setGroups, [riskyPeople.length])
 
   const handleClick = (event) => {
     const peeps = people
